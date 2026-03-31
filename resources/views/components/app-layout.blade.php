@@ -19,7 +19,7 @@
             <nav class="hidden md:block">
                 <ul class="flex space-x-12">
                     <li><a href="{{ route('home') }}" class="nav-link">Home</a></li>
-                    <li><a href="#" class="nav-link">Obras</a></li>
+                    <li><a href="{{ route('collections') }}" class="nav-link">Obras</a></li>
                     <li><a href="#" class="nav-link">Exposiciones</a></li>
                     <li><a href="{{ route('about') }}" class="nav-link">Acerca de Mi</a></li>
                 </ul>

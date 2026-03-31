@@ -11,3 +11,8 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('about');
 })->name('about');
+
+// Ruta Acerca de Mi
+Route::get('/collections', function () {
+    return view('collections');
+})->name('collections');

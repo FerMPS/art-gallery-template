@@ -4,7 +4,7 @@
     --font-raleway: "Raleway", sans-serif;
     --color-gallery-bg: #eeeeee;
     --color-gallery-text: #222831;
-    --color-gallery-accent: #E76F2E;
+    --color-gallery-accent: #e76f2e;
 }
 
 @layer base {
@@ -43,7 +43,7 @@
 }
 
 .nav-link::after {
-    content: '';
+    content: "";
     @apply absolute -bottom-1 left-0 w-0 h-[1px] bg-gallery-accent transition-all duration-300;
 }
 
@@ -54,7 +54,7 @@
 /* --- Hero Section --- */
 .hero-image-background {
     @apply absolute inset-0 z-0 opacity-30 grayscale filter blur-[2px] object-cover w-full h-full;
-    background-color: #1a1e24; 
+    background-color: #1a1e24;
     will-change: transform;
     transform: translateZ(0);
     backface-visibility: hidden;
@@ -82,11 +82,75 @@
     @apply p-16 md:p-24 space-y-8 flex flex-col justify-center h-full bg-gallery-bg;
 }
 
-
-.text-content {
-    @apply p-12 md:p-24 flex flex-col justify-center items-center h-full;
-}
-
 .image-wrapper img {
     transition: filter 2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- Estilos de la Vista Colecciones --- */
+
+.btn-quote {
+    @apply mt-4 text-gallery-accent text-[10px] tracking-[0.3em] uppercase font-bold 
+           border border-gallery-accent/30 px-6 py-3 inline-block transition-all duration-500 ease-out;
+    position: relative;
+}
+
+.btn-quote:hover {
+    @apply scale-110 border-gallery-accent/100;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+/* Ajuste para que las imágenes no se vean gigantes en desktop si el contenedor es pequeño */
+.aspect-\[4\/5\] {
+    position: relative;
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Contenedor de imagen más pequeño y estilizado --- */
+.image-wrapper-mini {
+    @apply aspect-[3/4] w-full relative;
+    box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Botón Cápsula Elegante --- */
+.btn-quote-capsule {
+    @apply mt-2 px-8 py-2.5 rounded-full border border-gallery-accent text-gallery-accent 
+           text-[9px] tracking-[0.3em] uppercase font-bold transition-all duration-500 ease-in-out;
+    background-color: transparent;
+}
+
+.btn-quote-capsule:hover {
+    @apply scale-110 bg-gallery-accent text-white;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+/* Ajuste sutil para el subrayado del botón */
+.btn-quote-capsule:hover {
+    box-shadow: 0 8px 20px -8px rgba(231, 111, 46, 0.4);
+}
+
+/* --- Nueva clase para imágenes más anchas y espaciadas --- */
+.image-wrapper-gallery {
+    @apply aspect-[16/10] w-full relative; /* Proporción más ancha tipo cine */
+    box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Botón Cápsula Refinado --- */
+.btn-quote-capsule {
+    @apply px-10 py-3 rounded-full border border-gallery-accent text-gallery-accent 
+           text-[10px] tracking-[0.4em] uppercase font-bold transition-all duration-500 ease-in-out;
+    background-color: transparent;
+}
+
+.btn-quote-capsule:hover {
+    @apply scale-105 bg-gallery-accent text-white;
+    text-decoration: underline;
+    text-underline-offset: 6px;
+    box-shadow: 0 15px 30px -10px rgba(231, 111, 46, 0.3);
+}
+
+/* Pequeño ajuste para que el texto no esté tan centrado */
+.text-gallery-text {
+    letter-spacing: -0.02em;
 }
