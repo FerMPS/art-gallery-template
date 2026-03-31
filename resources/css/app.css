@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@theme {
+    --font-raleway: "Raleway", sans-serif;
+    --color-gallery-bg: #eeeeee;
+    --color-gallery-text: #222831;
+    --color-gallery-accent: #E76F2E;
+}
+
+@layer base {
+    body {
+        @apply bg-gallery-bg text-gallery-text font-[Raleway] antialiased;
+    }
+}
+
+/* --- Estilos del Header & Nav --- */
+.header-capsule {
+    @apply w-fit h-12 flex items-center justify-center px-10 rounded-full transition-all duration-500 ease-in-out;
+    background-color: rgba(238, 238, 238, 0.35);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    /*border: 1px solid rgba(255, 255, 255, 0.4); */
+    box-shadow: 0 8px 25px -10px rgba(0, 0, 0, 0.08);
+    will-change: transform, background-color;
+    transform: translateZ(0);
+}
+
+/* Cuando pasas el mouse sobre la cápsula entera */
+.header-capsule:hover {
+    background-color: rgba(238, 238, 238, 1);
+    box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.12);
+}
+
+.nav-link {
+    @apply text-[10px] tracking-[0.2em] uppercase font-medium transition-all duration-300 relative px-1 inline-block;
+    color: var(--color-gallery-text);
+}
+
+/* Efecto de Hover en los Links */
+.nav-link:hover {
+    /*@apply text-gallery-accent;*/
+    transform: scale(1.15);
+}
+
+.nav-link::after {
+    content: '';
+    @apply absolute -bottom-1 left-0 w-0 h-[1px] bg-gallery-accent transition-all duration-300;
+}
+
+.nav-link:hover::after {
+    @apply w-full;
+}
+
+/* --- Hero Section --- */
+.hero-image-background {
+    @apply absolute inset-0 z-0 opacity-30 grayscale filter blur-[2px] object-cover w-full h-full;
+    background-color: #1a1e24; 
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* --- Secciones de Galería --- */
+.painting-section {
+    @apply min-h-screen flex items-center overflow-hidden bg-white;
+    content-visibility: auto;
+    contain-intrinsic-size: 100vh;
+}
+
+.image-wrapper {
+    @apply h-screen w-full overflow-hidden grayscale-[30%] hover:grayscale-0 transition-all duration-1000 ease-in-out;
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+.painting-image {
+    @apply w-full h-full object-cover;
+}
+
+.text-content {
+    @apply p-16 md:p-24 space-y-8 flex flex-col justify-center h-full bg-gallery-bg;
+}
+
+
+.text-content {
+    @apply p-12 md:p-24 flex flex-col justify-center items-center h-full;
+}
+
+.image-wrapper img {
+    transition: filter 2s cubic-bezier(0.4, 0, 0.2, 1);
+}
