@@ -15,7 +15,7 @@
 
 <body class="font-sans antialiased bg-gallery-bg text-gallery-text overflow-x-hidden">
 
-    <div class="fixed top-8 left-0 w-full z-[100] flex justify-center px-4">
+    <div class="absolute top-8 left-0 w-full z-[100] flex justify-center px-4">
         <header class="header-capsule">
             <nav class="hidden md:block">
                 <ul class="flex space-x-12">

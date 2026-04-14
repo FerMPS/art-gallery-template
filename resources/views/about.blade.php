@@ -1,12 +1,12 @@
 <x-app-layout>
     <x-slot:title>El Artista | Leonardo da Vinci</x-slot>
 
-    <section class="painting-section min-h-screen">
+    <section class="painting-section min-h-screen cursor-default!">
         <div class="flex flex-col md:grid md:grid-cols-2 w-full h-full items-stretch">
 
-            <div class="image-wrapper h-[50vh] md:h-screen" data-aos="fade-right">
+            <div class="image-wrapper h-[50vh] md:h-screen pointer-events-none" data-aos="fade-right">
                 <img src="{{ asset('images/da_vinci2.webp') }}" alt="Leonardo Portrait"
-                    class="painting-image grayscale hover:grayscale-0 md:duration-[2000ms] transition-all duration-700">
+                    class="painting-image md:duration-2000 transition-all duration-700 transform-none! cursor-default!">
             </div>
 
             <div class="text-content bg-gallery-bg p-10 md:p-24 flex items-center justify-center" data-aos="fade-left">

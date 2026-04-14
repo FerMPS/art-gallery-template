@@ -1,124 +1,159 @@
-@import "tailwindcss";
+/* Importación del núcleo de Tailwind CSS */
+@import 'tailwindcss';
 
-/* --- CONFIGURACIÓN DE TEMA --- */
+/* ==========================================================================
+   1. CONFIGURACIÓN DE TEMA (Variables de diseño)
+   ========================================================================== 
+*/
 @theme {
-    --font-raleway: "Raleway", sans-serif;
-    --color-gallery-bg: #eeeeee;
-    --color-gallery-text: #222831;
-    --color-gallery-accent: #e76f2e;
+    /* Tipografía personalizada */
+    --font-raleway: 'Raleway', sans-serif;
+
+    /* Paleta de colores específica para la galería */
+    --color-gallery-bg: #eeeeee; /* Fondo claro neutro */
+    --color-gallery-text: #222831; /* Texto oscuro profundo */
+    --color-gallery-accent: #e76f2e; /* Naranja vibrante para énfasis */
 }
 
+/* ==========================================================================
+   2. ESTILOS BASE (Reinicio y etiquetas globales)
+   ========================================================================== 
+*/
 @layer base {
     body {
+        /* Configuración global de la página: fuente, colores y suavizado de texto */
         @apply bg-gallery-bg text-gallery-text font-raleway antialiased overflow-x-hidden;
     }
 }
 
-/* --- COMPONENTES DE NAVEGACIÓN --- */
+/* ==========================================================================
+   3. COMPONENTES DE NAVEGACIÓN (Header y Enlaces)
+   ========================================================================== 
+*/
 
+/* Contenedor tipo "pastilla" flotante para el menú */
 .header-capsule {
     @apply w-fit h-10 md:h-12 flex items-center justify-center px-6 md:px-10 rounded-full 
            transition-all duration-500 ease-in-out bg-gallery-bg/35 backdrop-blur-md
            shadow-[0_8px_25px_-10px_rgba(0,0,0,0.08)] transform translate-z-0;
 }
 
+/* Efecto al pasar el mouse por la cápsula del header */
 .header-capsule:hover {
     @apply bg-gallery-bg shadow-[0_12px_30px_-10px_rgba(0,0,0,0.12)];
 }
 
+/* Enlaces del menú: tipografía pequeña, espaciada y minimalista */
 .nav-link {
     @apply text-[10px] tracking-[0.2em] uppercase font-medium transition-all duration-300 
            relative px-1 inline-block hover:scale-110;
 }
 
+/* Línea decorativa animada debajo de los enlaces (subrayado custom) */
 .nav-link::after {
-    content: "";
+    content: '';
     @apply absolute -bottom-1 left-0 w-0 h-[1px] bg-gallery-accent transition-all duration-300;
 }
 
+/* Expansión de la línea al hacer hover */
 .nav-link:hover::after {
     @apply w-full;
 }
 
-/* --- SECCIONES Y LAYOUT --- */
+/* ==========================================================================
+   4. LAYOUT Y SECCIONES (Hero y Estructura)
+   ========================================================================== 
+*/
 
+/* Fondo visual del Hero: desaturado, borroso y sutil */
 .hero-image-background {
     @apply absolute inset-0 z-0 opacity-30 grayscale blur-[2px] object-cover 
            w-full h-full bg-[#1a1e24] transform translate-z-0;
 }
 
+/* Contenedor principal de cada obra/sección */
 .painting-section {
     @apply min-h-screen flex items-center overflow-hidden bg-white;
-    content-visibility: auto;
+    content-visibility: auto; /* Optimización de rendimiento para renderizado */
+    transition: opacity 0.3s ease;
+    cursor: pointer;
 }
 
+/* Bloque de texto lateral que acompaña a las imágenes */
 .text-content {
     @apply p-10 md:p-24 space-y-8 flex flex-col justify-center h-full bg-gallery-bg;
 }
 
-/* --- GALERÍA E IMÁGENES --- */
-
-.image-wrapper {
-    @apply h-[50vh] md:h-screen w-full overflow-hidden grayscale-[30%] hover:grayscale-0 
-           transition-all duration-1000 ease-in-out;
-}
+/* ==========================================================================
+   5. GALERÍA E IMÁGENES (Tratamiento Refinado)
+   ========================================================================== 
+*/
 
 .painting-image {
-    @apply w-full h-full object-cover transition-transform duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)];
+    /* Eliminamos escalas pesadas, nos centramos en la suavidad */
+    @apply w-full h-full object-cover transition-all duration-700 ease-in-out;
 }
 
+/* En lugar de zoom, aplicamos un desenfoque elegante al contenedor */
 .group:hover .painting-image {
-    @apply scale-110;
+    @apply blur-[3px] grayscale-[20%];
 }
 
-/* --- BOTONES Y MODALES --- */
+/* Ajuste para que la sección de la obra no haga zoom extraño */
+.painting-section:hover .painting-image {
+    transform: none;
+}
+/* ==========================================================================
+   6. COMPONENTES DE INTERACCIÓN (Botones y Modales)
+   ========================================================================== 
+*/
 
+/* Botón de acción principal: estilo cápsula refinado */
 .btn-quote-capsule {
-    @apply px-8 md:px-10 py-3 rounded-full border border-gallery-accent text-gallery-accent 
-           text-[9px] md:text-[10px] tracking-[0.4em] uppercase font-bold bg-transparent
-           transition-all duration-500 hover:scale-105 hover:bg-gallery-accent hover:text-white
-           hover:shadow-[0_10px_20px_-5px_rgba(231,111,46,0.3)] hover:underline underline-offset-4;
+    /* Tamaño de texto más grande (text-xs/sm) y peso ligero (font-light) */
+    @apply px-10 md:px-12 py-4 rounded-full border border-gallery-accent text-gallery-accent 
+           text-xs md:text-sm tracking-[0.3em] uppercase font-light bg-transparent
+           transition-all duration-500 ease-out;
+
+    /* Estado Hover: eliminamos el subrayado y mantenemos la elegancia */
+    @apply hover:scale-105 hover:bg-gallery-accent hover:text-white
+           hover:shadow-[0_15px_30px_-10px_rgba(231,111,46,0.4)]
+           hover:no-underline; /* Asegura que no haya subrayado */
 }
 
+/* Ajustes de profundidad (Z-index) para el modal de vista previa */
 #quoteModal {
     @apply z-[9999];
 }
 
+/* Sombra suave para la imagen dentro del modal */
 #modalImg {
     @apply drop-shadow-[0_20px_30px_rgba(0,0,0,0.15)];
 }
 
+/* Estilo para los placeholders de los campos de entrada */
 input::placeholder {
     @apply text-gray-300 uppercase tracking-[0.2em] text-[9px];
 }
 
-/* --- INTERACCIÓN MÓVIL (TAP) --- */
+/* ==========================================================================
+   7. INTERACCIÓN MÓVIL (Estados de clic/tap)
+   ========================================================================== 
+*/
 
+/* Forza la visibilidad de la información en móviles cuando se activa por JS */
 .js-card.active-mobile .overlay-info {
     @apply !opacity-100;
 }
 
+/* Asegura que el contenido interno de la info se vea escalado correctamente */
 .js-card.active-mobile .overlay-info > div {
     @apply !scale-100;
 }
 
+/* Desactiva los efectos de hover persistentes en dispositivos con pantalla táctil */
 @media (hover: hover) {
     .js-card.active-mobile .overlay-info {
         @apply opacity-0;
     }
-}
-
-
-.painting-section {
-    transition: opacity 0.3s ease;
-}
-
-.painting-section:hover {
-    cursor: pointer;
-}
-
-/* Opcional: un ligero efecto visual al pasar el mouse */
-.painting-section:hover .painting-image {
-    transform: scale(1.02);
-    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
