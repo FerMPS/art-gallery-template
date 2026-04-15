@@ -12,7 +12,12 @@ Route::get('/about', function () {
     return view('about');
 })->name('about');
 
-// Ruta Acerca de Mi
+// Ruta Colecciones (Obras)
 Route::get('/collections', function () {
     return view('collections');
 })->name('collections');
+
+// Ruta Galerías (Exposiciones/Museos)
+Route::get('/galleries', function () {
+    return view('galleries');
+})->name('galleries');

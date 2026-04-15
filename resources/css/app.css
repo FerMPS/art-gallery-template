@@ -74,7 +74,7 @@
 /* Contenedor principal de cada obra/sección */
 .painting-section {
     @apply min-h-screen flex items-center overflow-hidden bg-white;
-    content-visibility: auto; /* Optimización de rendimiento para renderizado */
+    content-visibility: auto;
     transition: opacity 0.3s ease;
     cursor: pointer;
 }
@@ -94,10 +94,10 @@
     @apply w-full h-full object-cover transition-all duration-700 ease-in-out;
 }
 
-/* En lugar de zoom, aplicamos un desenfoque elegante al contenedor */
+/* desenfoque elegante al contenedor 
 .group:hover .painting-image {
     @apply blur-[3px] grayscale-[20%];
-}
+} */
 
 /* Ajuste para que la sección de la obra no haga zoom extraño */
 .painting-section:hover .painting-image {
@@ -143,12 +143,12 @@ input::placeholder {
 
 /* Forza la visibilidad de la información en móviles cuando se activa por JS */
 .js-card.active-mobile .overlay-info {
-    @apply !opacity-100;
+    @apply opacity-100!;
 }
 
 /* Asegura que el contenido interno de la info se vea escalado correctamente */
 .js-card.active-mobile .overlay-info > div {
-    @apply !scale-100;
+    @apply scale-100!;
 }
 
 /* Desactiva los efectos de hover persistentes en dispositivos con pantalla táctil */

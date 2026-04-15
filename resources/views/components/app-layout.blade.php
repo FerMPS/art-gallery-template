@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title ?? 'Galería de Arte' }}</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
 
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600&display=swap"
         rel="stylesheet">
@@ -21,7 +22,7 @@
                 <ul class="flex space-x-12">
                     <li><a href="{{ route('home') }}" class="nav-link">Home</a></li>
                     <li><a href="{{ route('collections') }}" class="nav-link">Obras</a></li>
-                    <li><a href="#" class="nav-link">Exposiciones</a></li>
+                    <li><a href="{{ route('galleries')}}" class="nav-link">Exposiciones</a></li>
                     <li><a href="{{ route('about') }}" class="nav-link">Acerca de Mi</a></li>
                 </ul>
             </nav>
@@ -47,7 +48,7 @@
                     <li><a href="{{ route('collections') }}"
                             class="text-4xl font-thin tracking-tighter hover:text-gallery-accent transition-colors"
                             onclick="toggleMobileMenu()">Obras</a></li>
-                    <li><a href="#"
+                    <li><a href="{{ route('galleries')}}"
                             class="text-4xl font-thin tracking-tighter hover:text-gallery-accent transition-colors"
                             onclick="toggleMobileMenu()">Exposiciones</a></li>
                     <li><a href="{{ route('about') }}"
